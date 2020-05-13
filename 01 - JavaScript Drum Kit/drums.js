@@ -1,4 +1,4 @@
-window.addEventListener('keydown', function(k) {
+function play(k) {
 	const audio = document.querySelector(`audio[data-key="${k.keyCode}"]`);
 	const key = document.querySelector(`.key[data-key="${k.keyCode}"]`);
 	//Duration of the transition in CSS
@@ -12,4 +12,6 @@ window.addEventListener('keydown', function(k) {
 	setTimeout(function() {
 		key.classList.remove('playing');
 	}, duration);
-});
+}
+
+window.addEventListener('keydown', play);
