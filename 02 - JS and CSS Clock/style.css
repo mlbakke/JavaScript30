@@ -40,7 +40,17 @@ body {
 	position: absolute;
 	top: 50%;
 	transform-origin: 100%;
-	transform: rotate(90deg);
 	transition: all 0.05s;
-	/* transition-timing-function: cubic-bezier(); */
+	transition-timing-function: cubic-bezier(.53, .06, .23, 1.57);
+}
+
+.hour-hand {
+	/* shorter hour-hand */
+	width: 40%;
+	left: 10%;
+}
+
+.second-hand {
+	/* thinner second-hand */
+	height: 3px;
 }
