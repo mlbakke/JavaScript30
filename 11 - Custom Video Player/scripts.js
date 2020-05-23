@@ -52,12 +52,15 @@ function openFull() {
 
 function handleKey(e) {
 	const key = e.keyCode;
+	// f for fullscreen
 	if (key === 70) {
 		openFull();
 	}
+	// space for play/pauses
 	if (key === 32) {
 		togglePlay();
 	}
+	// m for mute
 	if (key === 77) {
 		const volRange = document.querySelector('input[name=volume]');
 		volRange.value = 0;
