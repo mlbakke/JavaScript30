@@ -1,5 +1,6 @@
 const addItems = document.querySelector('.add-items');
 const itemsList = document.querySelector('.plates');
+//fill items with locally stored items, if none exist : empty array
 const items = JSON.parse(localStorage.getItem('items')) || [];
 
 function addItem(e) {
@@ -11,6 +12,7 @@ function addItem(e) {
 	};
 	items.push(item);
 	populateList(items, itemsList);
+	//save items as string in local storage
 	localStorage.setItem('items', JSON.stringify(items));
 	this.reset();
 }
@@ -26,6 +28,15 @@ function populateList(plates = [], platesList) {
 		.join('');
 }
 
+function toggleDone(e) {
+	if (!e.target.matches('input')) return; //skip unless input
+	const targetIdx = e.target.dataset.index;
+	items[targetIdx].done = !items[targetIdx].done;
+	localStorage.setItem('items', JSON.stringify(items));
+	populateList(items, itemsList);
+}
+
 addItems.addEventListener('submit', addItem);
+itemsList.addEventListener('click', toggleDone);
 
 populateList(items, itemsList);
