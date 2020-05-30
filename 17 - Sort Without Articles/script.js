@@ -13,3 +13,10 @@ const bands = [
 	'Anywhere But Here',
 	'An Old Dog'
 ];
+
+function removeArticle(band) {
+	return band.replace(/^(a |an |the )/i, '');
+}
+const orderedBands = bands.sort((a, b) => (removeArticle(a) > removeArticle(b) ? 1 : -1));
+
+document.querySelector('#bands').innerHTML = orderedBands.map((band) => `<li>${band}</li>`).join('');
